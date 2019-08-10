@@ -81,7 +81,6 @@ export default {
       let item = this.initialList.find(ele => ele.id == data)
       let itemType = event.target.parentElement.parentElement.dataset.radius || event.target.dataset.radius
       console.log(this.initialList, item, itemType)
-      localStorage.setItem('listJson', JSON.stringify(this.initialList))
     },
     filterFun() {
       let list = JSON.parse(localStorage.getItem('listJson'))
