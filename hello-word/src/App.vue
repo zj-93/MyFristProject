@@ -72,25 +72,16 @@ export default {
       // document.getElementById("demo").innerHTML = " p 元素正在拖动";
     },
     allowDrop(event) {
-      console.log(111111111)
       event.preventDefault();
     },
     drop(event) {
       event.preventDefault();
       var data = event.dataTransfer.getData("Text");
-      // if(event.toElement.className == "dragContent") {
-        event.currentTarget.insertBefore(document.getElementById(data).parentElement, data.parentElement)
-        let item = this.initialList.find(ele => ele.id == data)
-        let itemType = event.target.parentElement.parentElement.dataset.radius || event.target.dataset.radius
-        item.type = itemType
-        console.log(this.initialList, item, itemType)
-        localStorage.setItem('listJson', JSON.stringify(this.initialList))
-        this.filterFun()
-      // } else {
-      //   event.stopPropagation()
-      // }
-      
-      // document.getElementById(data).parentElement.remove();
+      event.currentTarget.insertBefore(document.getElementById(data).parentElement, data.parentElement)
+      let item = this.initialList.find(ele => ele.id == data)
+      let itemType = event.target.parentElement.parentElement.dataset.radius || event.target.dataset.radius
+      console.log(this.initialList, item, itemType)
+      localStorage.setItem('listJson', JSON.stringify(this.initialList))
     },
     filterFun() {
       let list = JSON.parse(localStorage.getItem('listJson'))
@@ -132,6 +123,9 @@ export default {
 .title {
   text-align: left;
   margin-bottom: 20px;
+}
+.dragContent{ 
+  min-height: 250px;
 }
 .bigList {
   text-align: left;
